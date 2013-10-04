@@ -5,18 +5,18 @@
 ### EDIT THESE PATHS FOR YOUR OWN SETUP ###
 ###########################################
 
-SMSDK = ../..
-HL2SDK_ORIG = ../../../hl2sdk
-HL2SDK_OB = ../../../hl2sdk-ob
-HL2SDK_CSS = ../../../hl2sdk-css
-HL2SDK_HL2DM = ../../../hl2sdk-hl2dm
-HL2SDK_DODS = ../../../hl2sdk-dods
-HL2SDK_TF2 = ../../../hl2sdk-tf2
-HL2SDK_L4D = ../../../hl2sdk-l4d
-HL2SDK_ND = ../../../hl2sdk-nd
-HL2SDK_L4D2 = ../../../hl2sdk-l4d2
-HL2SDK_CSGO = ../../../hl2sdk-csgo
-MMSOURCE110 = ../../../mmsource-1.10
+SMSDK = ../../sourcemod-1.5
+HL2SDK_ORIG = ../../hl2sdks/hl2sdk
+HL2SDK_OB = ../../hl2sdks/hl2sdk-ob
+HL2SDK_CSS = ../../hl2sdks/hl2sdk-css
+HL2SDK_HL2DM = ../../hl2sdks/hl2sdk-hl2dm
+HL2SDK_DODS = ../../hl2sdks/hl2sdk-dods
+HL2SDK_TF2 = ../../hl2sdks/hl2sdk-tf2
+HL2SDK_L4D = ../../hl2sdks/hl2sdk-l4d
+HL2SDK_ND = ../../hl2sdks/hl2sdk-nd
+HL2SDK_L4D2 = ../../hl2sdks/hl2sdk-l4d2
+HL2SDK_CSGO = ../../hl2sdks/hl2sdk-csgo
+MMSOURCE110 = ../../mmsource-1.10
 
 #####################################
 ### EDIT BELOW FOR OTHER PROJECTS ###
