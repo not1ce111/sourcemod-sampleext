@@ -9,11 +9,14 @@ SMSDK = ../..
 HL2SDK_ORIG = ../../../hl2sdk
 HL2SDK_OB = ../../../hl2sdk-ob
 HL2SDK_CSS = ../../../hl2sdk-css
-HL2SDK_OB_VALVE = ../../../hl2sdk-ob-valve
+HL2SDK_HL2DM = ../../../hl2sdk-hl2dm
+HL2SDK_DODS = ../../../hl2sdk-dods
+HL2SDK_TF2 = ../../../hl2sdk-tf2
 HL2SDK_L4D = ../../../hl2sdk-l4d
+HL2SDK_ND = ../../../hl2sdk-nd
 HL2SDK_L4D2 = ../../../hl2sdk-l4d2
 HL2SDK_CSGO = ../../../hl2sdk-csgo
-MMSOURCE19 = ../../../mmsource-1.9
+MMSOURCE110 = ../../../mmsource-1.10
 
 #####################################
 ### EDIT BELOW FOR OTHER PROJECTS ###
@@ -44,47 +47,8 @@ CPP_OSX = clang
 override ENGSET = false
 
 # Check for valid list of engines
-ifneq (,$(filter original orangebox orangeboxvalve css left4dead left4dead2 csgo,$(ENGINE)))
+ifneq (,$(filter original orangebox css hl2dm dods tf2 left4dead nd left4dead2 csgo,$(ENGINE)))
 	override ENGSET = true
-endif
-
-ifeq "$(ENGINE)" "original"
-	HL2SDK = $(HL2SDK_ORIG)
-	CFLAGS += -DSOURCE_ENGINE=1
-endif
-ifeq "$(ENGINE)" "orangebox"
-	HL2SDK = $(HL2SDK_OB)
-	CFLAGS += -DSOURCE_ENGINE=3
-endif
-ifeq "$(ENGINE)" "css"
-	HL2SDK = $(HL2SDK_CSS)
-	CFLAGS += -DSOURCE_ENGINE=6
-endif
-ifeq "$(ENGINE)" "orangeboxvalve"
-	HL2SDK = $(HL2SDK_OB_VALVE)
-	CFLAGS += -DSOURCE_ENGINE=7
-endif
-ifeq "$(ENGINE)" "left4dead"
-	HL2SDK = $(HL2SDK_L4D)
-	CFLAGS += -DSOURCE_ENGINE=8
-endif
-ifeq "$(ENGINE)" "left4dead2"
-	HL2SDK = $(HL2SDK_L4D2)
-	CFLAGS += -DSOURCE_ENGINE=9
-endif
-ifeq "$(ENGINE)" "csgo"
-	HL2SDK = $(HL2SDK_CSGO)
-	CFLAGS += -DSOURCE_ENGINE=12
-endif
-
-HL2PUB = $(HL2SDK)/public
-
-ifeq "$(ENGINE)" "original"
-	INCLUDE += -I$(HL2SDK)/public/dlls
-	METAMOD = $(MMSOURCE19)/core-legacy
-else
-	INCLUDE += -I$(HL2SDK)/public/game/server
-	METAMOD = $(MMSOURCE19)/core
 endif
 
 OS := $(shell uname -s)
@@ -99,6 +63,84 @@ else
 	else
 		HL2LIB = $(HL2SDK)/lib/linux
 	endif
+endif
+
+ifeq "$(ENGINE)" "original"
+	HL2SDK = $(HL2SDK_ORIG)
+	CFLAGS += -DSOURCE_ENGINE=1
+	LIB_SUFFIX = _i486.$(LIB_EXT)
+endif
+ifeq "$(ENGINE)" "orangebox"
+	HL2SDK = $(HL2SDK_OB)
+	CFLAGS += -DSOURCE_ENGINE=3
+	LIB_SUFFIX = _i486.$(LIB_EXT)
+	BUILD_SUFFIX = .2.ep2
+endif
+ifeq "$(ENGINE)" "css"
+	HL2SDK = $(HL2SDK_CSS)
+	CFLAGS += -DSOURCE_ENGINE=6
+	LIB_PREFIX = lib
+	LIB_SUFFIX = _srv.$(LIB_EXT)
+	BUILD_SUFFIX = .2.css
+endif
+ifeq "$(ENGINE)" "hl2dm"
+	HL2SDK = $(HL2SDK_HL2DM)
+	CFLAGS += -DSOURCE_ENGINE=7
+	LIB_PREFIX = lib
+	LIB_SUFFIX = _srv.$(LIB_EXT)
+	BUILD_SUFFIX = .2.hl2dm
+endif
+ifeq "$(ENGINE)" "dods"
+	HL2SDK = $(HL2SDK_DODS)
+	CFLAGS += -DSOURCE_ENGINE=8
+	LIB_PREFIX = lib
+	LIB_SUFFIX = _srv.$(LIB_EXT)
+	BUILD_SUFFIX = .2.dods
+endif
+ifeq "$(ENGINE)" "tf2"
+	HL2SDK = $(HL2SDK_TF2)
+	CFLAGS += -DSOURCE_ENGINE=9
+	LIB_PREFIX = lib
+	LIB_SUFFIX = _srv.$(LIB_EXT)
+	BUILD_SUFFIX = .2.tf2
+endif
+ifeq "$(ENGINE)" "left4dead"
+	HL2SDK = $(HL2SDK_L4D)
+	CFLAGS += -DSOURCE_ENGINE=10
+	LIB_PREFIX = lib
+	LIB_SUFFIX = .$(LIB_EXT)
+	BUILD_SUFFIX = .2.l4d
+endif
+ifeq "$(ENGINE)" "nd"
+	HL2SDK = $(HL2SDK_ND)
+	CFLAGS += -DSOURCE_ENGINE=11
+	LIB_PREFIX = lib
+	LIB_SUFFIX = .$(LIB_EXT)
+	BUILD_SUFFIX = .2.nd
+endif
+ifeq "$(ENGINE)" "left4dead2"
+	HL2SDK = $(HL2SDK_L4D2)
+	CFLAGS += -DSOURCE_ENGINE=12
+	LIB_PREFIX = lib
+	LIB_SUFFIX = _srv.$(LIB_EXT)
+	BUILD_SUFFIX = .2.l4d2
+endif
+ifeq "$(ENGINE)" "csgo"
+	HL2SDK = $(HL2SDK_CSGO)
+	CFLAGS += -DSOURCE_ENGINE=15
+	LIB_PREFIX = lib
+	LIB_SUFFIX = .$(LIB_EXT)
+	BUILD_SUFFIX = .2.csgo
+endif
+
+HL2PUB = $(HL2SDK)/public
+
+ifeq "$(ENGINE)" "original"
+	INCLUDE += -I$(HL2SDK)/public/dlls
+	METAMOD = $(MMSOURCE110)/core-legacy
+else
+	INCLUDE += -I$(HL2SDK)/public/game/server
+	METAMOD = $(MMSOURCE110)/core
 endif
 
 # if ENGINE is original or OB
@@ -122,8 +164,8 @@ ifeq "$(USEMETA)" "true"
 	INCLUDE += -I$(HL2PUB) -I$(HL2PUB)/engine -I$(HL2PUB)/tier0 -I$(HL2PUB)/tier1 -I$(METAMOD) \
 		-I$(METAMOD)/sourcehook 
 	CFLAGS += -DSE_EPISODEONE=1 -DSE_DARKMESSIAH=2 -DSE_ORANGEBOX=3 -DSE_BLOODYGOODTIME=4 -DSE_EYE=5 \
-		-DSE_CSS=6 -DSE_ORANGEBOXVALVE=7 -DSE_LEFT4DEAD=8 -DSE_LEFT4DEAD2=9 -DSE_ALIENSWARM=10 \
-		-DSE_PORTAL2=11 -DSE_CSGO=12
+		-DSE_CSS=6 -DSE_HL2DM=7 -DSE_DODS=8 -DSE_TF2=9 -DSE_LEFT4DEAD=10 -DSE_NUCLEARDAWN=11 \
+		-DSE_LEFT4DEAD2=12 -DSE_ALIENSWARM=13 -DSE_PORTAL2=14 -DSE_CSGO=15
 endif
 
 LINK += -m32 -lm -ldl
@@ -137,7 +179,7 @@ CPPFLAGS += -Wno-non-virtual-dtor -fno-exceptions -fno-rtti
 ### DO NOT EDIT BELOW HERE FOR MOST PROJECTS ###
 ################################################
 
-BINARY = $(PROJECT).ext.$(LIB_EXT)
+BINARY = $(PROJECT).ext$(BUILD_SUFFIX).$(LIB_EXT)
 
 ifeq "$(DEBUG)" "true"
 	BIN_DIR = Debug
@@ -214,7 +256,7 @@ all: check
 check:
 	if [ "$(USEMETA)" = "true" ] && [ "$(ENGSET)" = "false" ]; then \
 		echo "You must supply one of the following values for ENGINE:"; \
-		echo "csgo, left4dead2, left4dead, css, orangeboxvalve, orangebox, or original"; \
+		echo "csgo, css, dods, hl2dm, left4dead, left4dead2, nd, orangebox, original, or tf2"; \
 		exit 1; \
 	fi
 
