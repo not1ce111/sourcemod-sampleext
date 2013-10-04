@@ -143,14 +143,6 @@ else
 	METAMOD = $(MMSOURCE110)/core
 endif
 
-# if ENGINE is original or OB
-ifneq (,$(filter original orangebox,$(ENGINE)))
-	LIB_SUFFIX = _i486.$(LIB_EXT)
-else
-	LIB_PREFIX = lib
-	LIB_SUFFIX = .$(LIB_EXT)
-endif
-
 INCLUDE += -I. -I.. -Isdk -I$(SMSDK)/public -I$(SMSDK)/public/sourcepawn
 
 ifeq "$(USEMETA)" "true"
