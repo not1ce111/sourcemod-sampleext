@@ -69,6 +69,7 @@ ifeq "$(ENGINE)" "original"
 	HL2SDK = $(HL2SDK_ORIG)
 	CFLAGS += -DSOURCE_ENGINE=1
 	LIB_SUFFIX = _i486.$(LIB_EXT)
+	BUILD_SUFFIX = .1.ep1
 endif
 ifeq "$(ENGINE)" "orangebox"
 	HL2SDK = $(HL2SDK_OB)
