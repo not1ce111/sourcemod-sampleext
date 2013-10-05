@@ -32,6 +32,7 @@ Global
 		Release - HL2DM|Win32 = Release - HL2DM|Win32
 		Release - Left 4 Dead 2|Win32 = Release - Left 4 Dead 2|Win32
 		Release - Left 4 Dead|Win32 = Release - Left 4 Dead|Win32
+		Release - Nuclear Dawn|Win32 = Release - Nuclear Dawn|Win32
 		Release - Old Metamod|Win32 = Release - Old Metamod|Win32
 		Release - Orange Box|Win32 = Release - Orange Box|Win32
 		Release - TF2|Win32 = Release - TF2|Win32
@@ -92,6 +93,8 @@ Global
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Left 4 Dead 2|Win32.Build.0 = Release - Left 4 Dead 2|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Left 4 Dead|Win32.ActiveCfg = Release - Left 4 Dead|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Left 4 Dead|Win32.Build.0 = Release - Left 4 Dead|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Nuclear Dawn|Win32.ActiveCfg = Release - Nuclear Dawn|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Nuclear Dawn|Win32.Build.0 = Release - Nuclear Dawn|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Old Metamod|Win32.ActiveCfg = Release - Old Metamod|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Old Metamod|Win32.Build.0 = Release - Old Metamod|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Orange Box|Win32.ActiveCfg = Release - Orange Box|Win32
