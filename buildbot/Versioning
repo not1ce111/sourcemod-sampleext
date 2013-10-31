@@ -5,8 +5,8 @@ import subprocess
 from ambuild.cache import Cache
 import ambuild.command as command
 
-#Quickly try to ascertain the current repository revision
-def GetVersion():
+#Quickly try to ascertain the current Hg repository revision
+def GetHgVersion():
 	args = ['hg', 'parent', '-R', AMBuild.sourceFolder]
 	p = command.RunDirectCommand(AMBuild, args)
 	m = re.match('changeset:\s+(\d+):(.+)', p.stdoutText)
@@ -14,8 +14,8 @@ def GetVersion():
 		raise Exception('Could not determine repository version')
 	return m.groups()
 
-def PerformReversioning():
-	rev, cset = GetVersion()
+def PerformHgReversioning():
+	rev, cset = GetHgVersion()
 	cacheFile = os.path.join(AMBuild.outputFolder, '.ambuild', 'hgcache')
 	cache = Cache(cacheFile)
 	if os.path.isfile(cacheFile):
@@ -50,6 +50,50 @@ def PerformReversioning():
 	incFile.close()
 	cache.WriteCache()
 
-PerformReversioning()
+#Quickly try to ascertain the current Hg repository revision
+def GetGitVersion():
+	args = ['git', '--work-tree', AMBuild.sourceFolder, 'rev-parse', 'HEAD']
+	p = command.RunDirectCommand(AMBuild, args)
+	if p.stdoutText == None:
+		raise Exception('Could not determine repository version')
+	return p.stdoutText
+
+def PerformGitReversioning():
+	cset = GetGitVersion()
+	cacheFile = os.path.join(AMBuild.outputFolder, '.ambuild', 'gitcache')
+	cache = Cache(cacheFile)
+	if os.path.isfile(cacheFile):
+		cache.LoadCache()
+		if cache.HasVariable('cset') and cache['cset'] == cset:
+			return False
+	cache.CacheVariable('cset', cset)
+
+	productFile = open(os.path.join(AMBuild.sourceFolder, 'product.version'), 'r')
+	productContents = productFile.read()
+	productFile.close()
+	m = re.match('(\d+)\.(\d+)\.(\d+)(.*)', productContents)
+	if m == None:
+		raise Exception('Could not detremine product version')
+	major, minor, release, tag = m.groups()
+
+	incFolder = os.path.join(AMBuild.sourceFolder, 'extension')
+	incFile = open(os.path.join(incFolder, 'version_auto.h'), 'w')
+	incFile.write("""
+#ifndef _AUTO_VERSION_INFORMATION_H_
+#define _AUTO_VERSION_INFORMATION_H_
+
+#define SM_BUILD_TAG	 	\"{0}\"
+#define SM_BUILD_UNIQUEID	\"{1}\" SM_BUILD_TAG
+#define SM_VERSION			\"{2}.{3}.{4}\"
+#define SM_FULL_VERSION		SM_VERSION SM_BUILD_TAG
+#define SM_FILE_VERSION		{5},{6},{7},0
+
+#endif /* _AUTO_VERSION_INFORMATION_H_ */
+
+""".format(tag, cset, major, minor, release, major, minor, release))
+	incFile.close()
+	cache.WriteCache()
+
+PerformHgReversioning()
 
 
