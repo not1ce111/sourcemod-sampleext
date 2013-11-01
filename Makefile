@@ -11,11 +11,15 @@ HL2SDK_OB = ../../hl2sdks/hl2sdk-ob
 HL2SDK_CSS = ../../hl2sdks/hl2sdk-css
 HL2SDK_HL2DM = ../../hl2sdks/hl2sdk-hl2dm
 HL2SDK_DODS = ../../hl2sdks/hl2sdk-dods
+HL2SDK_2013 = ../../hl2sdks/hl2sdk-sdk2013
 HL2SDK_TF2 = ../../hl2sdks/hl2sdk-tf2
 HL2SDK_L4D = ../../hl2sdks/hl2sdk-l4d
 HL2SDK_ND = ../../hl2sdks/hl2sdk-nd
 HL2SDK_L4D2 = ../../hl2sdks/hl2sdk-l4d2
+HL2SDK_BLADE = ../../hl2sdks/hl2sdk-blade
+HL2SDK_INSURGENCY = ../../hl2sdks/hl2sdk-insurgency
 HL2SDK_CSGO = ../../hl2sdks/hl2sdk-csgo
+HL2SDK_DOTA = ../../hl2sdks/hl2sdk-dota
 MMSOURCE110 = ../../mmsource-1.10
 
 #####################################
@@ -47,7 +51,7 @@ CPP_OSX = clang
 override ENGSET = false
 
 # Check for valid list of engines
-ifneq (,$(filter original orangebox css hl2dm dods tf2 left4dead nd left4dead2 csgo,$(ENGINE)))
+ifneq (,$(filter original orangebox css hl2dm dods sdk2013 tf2 left4dead nd left4dead2 blade insurgency csgo dota,$(ENGINE)))
 	override ENGSET = true
 endif
 
@@ -98,40 +102,68 @@ ifeq "$(ENGINE)" "dods"
 	LIB_SUFFIX = _srv.$(LIB_EXT)
 	BUILD_SUFFIX = .2.dods
 endif
+ifeq "$(ENGINE)" "sdk2013"
+	HL2SDK = $(HL2SDK_2013)
+	CFLAGS += -DSOURCE_ENGINE=9
+	LIB_PREFIX = lib
+	LIB_SUFFIX = _srv.$(LIB_EXT)
+	BUILD_SUFFIX = .2.sdk2013
+endif
 ifeq "$(ENGINE)" "tf2"
 	HL2SDK = $(HL2SDK_TF2)
-	CFLAGS += -DSOURCE_ENGINE=9
+	CFLAGS += -DSOURCE_ENGINE=10
 	LIB_PREFIX = lib
 	LIB_SUFFIX = _srv.$(LIB_EXT)
 	BUILD_SUFFIX = .2.tf2
 endif
 ifeq "$(ENGINE)" "left4dead"
 	HL2SDK = $(HL2SDK_L4D)
-	CFLAGS += -DSOURCE_ENGINE=10
+	CFLAGS += -DSOURCE_ENGINE=11
 	LIB_PREFIX = lib
 	LIB_SUFFIX = .$(LIB_EXT)
 	BUILD_SUFFIX = .2.l4d
 endif
 ifeq "$(ENGINE)" "nd"
 	HL2SDK = $(HL2SDK_ND)
-	CFLAGS += -DSOURCE_ENGINE=11
+	CFLAGS += -DSOURCE_ENGINE=12
 	LIB_PREFIX = lib
 	LIB_SUFFIX = .$(LIB_EXT)
 	BUILD_SUFFIX = .2.nd
 endif
 ifeq "$(ENGINE)" "left4dead2"
 	HL2SDK = $(HL2SDK_L4D2)
-	CFLAGS += -DSOURCE_ENGINE=12
+	CFLAGS += -DSOURCE_ENGINE=13
 	LIB_PREFIX = lib
 	LIB_SUFFIX = _srv.$(LIB_EXT)
 	BUILD_SUFFIX = .2.l4d2
 endif
+ifeq "$(ENGINE)" "blade"
+	HL2SDK = $(HL2SDK_BLADE)
+	CFLAGS += -DSOURCE_ENGINE=16
+	LIB_PREFIX = lib
+	LIB_SUFFIX = .$(LIB_EXT)
+	BUILD_SUFFIX = .2.blade
+endif
+ifeq "$(ENGINE)" "insurgency"
+	HL2SDK = $(HL2SDK_INSURGENCY)
+	CFLAGS += -DSOURCE_ENGINE=17
+	LIB_PREFIX = lib
+	LIB_SUFFIX = .$(LIB_EXT)
+	BUILD_SUFFIX = .2.insurgency
+endif
 ifeq "$(ENGINE)" "csgo"
 	HL2SDK = $(HL2SDK_CSGO)
-	CFLAGS += -DSOURCE_ENGINE=15
+	CFLAGS += -DSOURCE_ENGINE=18
 	LIB_PREFIX = lib
 	LIB_SUFFIX = .$(LIB_EXT)
 	BUILD_SUFFIX = .2.csgo
+endif
+ifeq "$(ENGINE)" "dota"
+	HL2SDK = $(HL2SDK_DOTA)
+	CFLAGS += -DSOURCE_ENGINE=19
+	LIB_PREFIX = lib
+	LIB_SUFFIX = .$(LIB_EXT)
+	BUILD_SUFFIX = .2.dota
 endif
 
 HL2PUB = $(HL2SDK)/public
@@ -147,8 +179,15 @@ endif
 INCLUDE += -I. -I.. -Isdk -I$(SMSDK)/public -I$(SMSDK)/public/sourcepawn
 
 ifeq "$(USEMETA)" "true"
-	LINK_HL2 = $(HL2LIB)/tier1_i486.a $(LIB_PREFIX)vstdlib$(LIB_SUFFIX) $(LIB_PREFIX)tier0$(LIB_SUFFIX)
-	ifeq "$(ENGINE)" "csgo"
+	ifeq "$(ENGINE)" "sdk2013"
+		LINK_TIER1 = $(HL2LIB)/tier1.a mathlib.a
+	else
+		LINK_TIER1 = $(HL2LIB)/tier1_i486.a mathlib_i486.a
+	endif
+
+	LINK_HL2 = $(LINK_TIER1) $(LIB_PREFIX)vstdlib$(LIB_SUFFIX) $(LIB_PREFIX)tier0$(LIB_SUFFIX)
+
+	ifneq (,$(filter csgo blade insurgency,$(ENGINE)))
 		LINK_HL2 += $(HL2LIB)/interfaces_i486.a
 	endif
 
@@ -157,8 +196,9 @@ ifeq "$(USEMETA)" "true"
 	INCLUDE += -I$(HL2PUB) -I$(HL2PUB)/engine -I$(HL2PUB)/tier0 -I$(HL2PUB)/tier1 -I$(METAMOD) \
 		-I$(METAMOD)/sourcehook 
 	CFLAGS += -DSE_EPISODEONE=1 -DSE_DARKMESSIAH=2 -DSE_ORANGEBOX=3 -DSE_BLOODYGOODTIME=4 -DSE_EYE=5 \
-		-DSE_CSS=6 -DSE_HL2DM=7 -DSE_DODS=8 -DSE_TF2=9 -DSE_LEFT4DEAD=10 -DSE_NUCLEARDAWN=11 \
-		-DSE_LEFT4DEAD2=12 -DSE_ALIENSWARM=13 -DSE_PORTAL2=14 -DSE_CSGO=15 -DSE_DOTA=16
+		-DSE_CSS=6 -DSE_HL2DM=7 -DSE_DODS=8 -DSE_SDK2013=9 -DSE_TF2=10 -DSE_LEFT4DEAD=11 -DSE_NUCLEARDAWN=12 \
+		-DSE_LEFT4DEAD2=13 -DSE_ALIENSWARM=14 -DSE_PORTAL2=15 -DSE_BLADE=16 -DSE_INSURGENCY=17 \
+		-DSE_CSGO=18 -DSE_DOTA=19
 endif
 
 LINK += -m32 -lm -ldl
@@ -249,7 +289,7 @@ all: check
 check:
 	if [ "$(USEMETA)" = "true" ] && [ "$(ENGSET)" = "false" ]; then \
 		echo "You must supply one of the following values for ENGINE:"; \
-		echo "csgo, css, dods, hl2dm, left4dead, left4dead2, nd, orangebox, original, or tf2"; \
+		echo "blade, csgo, css, dods, dota, hl2dm, insurgency, left4dead, left4dead2, nd, orangebox, original, sdk2013, or tf2"; \
 		exit 1; \
 	fi
 
