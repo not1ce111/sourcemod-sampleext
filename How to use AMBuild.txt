@@ -1,0 +1,32 @@
+AMBuild is the build system AlliedMods uses to compile AMXModX, MetaMod: Source, and SourceMod.
+
+Prerequisites:
+
+1. Python 2.6 or newer.
+2. Mercurial client.
+
+Installing AMBuild:
+1. Use Mercurial to clone the AMBuild repository: https://hg.alliedmods.net/ambuild/
+2. Run python setup.py build
+3. Run python setup.py install
+
+To configure your project to use AMBuild, it helps if you have experience editing the Makefile for compiling Linux extensions by hand.
+
+1. Open AMBuilder.  Near the bottom are several binary.AddSourceFiles entries.
+   Basically, you'll want to edit the second of these lines to reference any additional files you need compiled.
+
+   For instance, if you have a second file named natives.cpp, the line should look like this:
+	binary.AddSourceFiles(['extension.cpp', 'natives.cpp'])
+
+2. Edit product.version to have the extension's version number in it.
+
+3. Edit buildbot/PackageScript.  About halfway down, these is a list named folders.  Add any folders you need created to this list using the format provided.
+   Just below that is a section labeled Copy Files.  The first lines are the place where the where said files are located, the second lines are where they should be copied to.
+   Any destination directories should have been added to the folders list.
+
+4. Edit buildbot/Versioning.  Near the bottom is a line that just has PerformHgReversioning() on it.
+   If you're using Mercurial for your repository, leave this alone.
+   If you're using Git for your repository, change this to PerformGitReversioning()
+   If you're not using a SCM or don't want versioning included in your extension, edit AMBuildScript and remove/comment out the following line
+      AMBuild.Include(os.path.join('buildbot', 'Versioning'), globals)
+
