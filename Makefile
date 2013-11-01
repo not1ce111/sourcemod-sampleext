@@ -19,7 +19,6 @@ HL2SDK_L4D2 = ../../hl2sdks/hl2sdk-l4d2
 HL2SDK_BLADE = ../../hl2sdks/hl2sdk-blade
 HL2SDK_INSURGENCY = ../../hl2sdks/hl2sdk-insurgency
 HL2SDK_CSGO = ../../hl2sdks/hl2sdk-csgo
-HL2SDK_DOTA = ../../hl2sdks/hl2sdk-dota
 MMSOURCE110 = ../../mmsource-1.10
 
 #####################################
@@ -51,7 +50,7 @@ CPP_OSX = clang
 override ENGSET = false
 
 # Check for valid list of engines
-ifneq (,$(filter original orangebox css hl2dm dods sdk2013 tf2 left4dead nd left4dead2 blade insurgency csgo dota,$(ENGINE)))
+ifneq (,$(filter original orangebox css hl2dm dods sdk2013 tf2 left4dead nd left4dead2 blade insurgency csgo,$(ENGINE)))
 	override ENGSET = true
 endif
 
@@ -158,14 +157,6 @@ ifeq "$(ENGINE)" "csgo"
 	LIB_SUFFIX = .$(LIB_EXT)
 	BUILD_SUFFIX = .2.csgo
 endif
-ifeq "$(ENGINE)" "dota"
-	HL2SDK = $(HL2SDK_DOTA)
-	CFLAGS += -DSOURCE_ENGINE=19
-	LIB_PREFIX = lib
-	LIB_SUFFIX = .$(LIB_EXT)
-	BUILD_SUFFIX = .2.dota
-endif
-
 HL2PUB = $(HL2SDK)/public
 
 ifeq "$(ENGINE)" "original"
@@ -289,7 +280,7 @@ all: check
 check:
 	if [ "$(USEMETA)" = "true" ] && [ "$(ENGSET)" = "false" ]; then \
 		echo "You must supply one of the following values for ENGINE:"; \
-		echo "blade, csgo, css, dods, dota, hl2dm, insurgency, left4dead, left4dead2, nd, orangebox, original, sdk2013, or tf2"; \
+		echo "blade, csgo, css, dods, hl2dm, insurgency, left4dead, left4dead2, nd, orangebox, original, sdk2013, or tf2"; \
 		exit 1; \
 	fi
 
