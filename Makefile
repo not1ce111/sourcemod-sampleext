@@ -171,9 +171,9 @@ INCLUDE += -I. -I.. -Isdk -I$(SMSDK)/public -I$(SMSDK)/public/sourcepawn
 
 ifeq "$(USEMETA)" "true"
 	ifeq "$(ENGINE)" "sdk2013"
-		LINK_TIER1 = $(HL2LIB)/tier1.a mathlib.a
+		LINK_TIER1 = $(HL2LIB)/tier1.a $(HL2LIB)/mathlib.a
 	else
-		LINK_TIER1 = $(HL2LIB)/tier1_i486.a mathlib_i486.a
+		LINK_TIER1 = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a
 	endif
 
 	LINK_HL2 = $(LINK_TIER1) $(LIB_PREFIX)vstdlib$(LIB_SUFFIX) $(LIB_PREFIX)tier0$(LIB_SUFFIX)
