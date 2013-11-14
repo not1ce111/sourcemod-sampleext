@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug - Blade|Win32">
-      <Configuration>Debug - Blade</Configuration>
+    <ProjectConfiguration Include="Debug - Blade Symphony|Win32">
+      <Configuration>Debug - Blade Symphony</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug - CSGO|Win32">
@@ -81,8 +81,8 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release - Blade|Win32">
-      <Configuration>Release - Blade</Configuration>
+    <ProjectConfiguration Include="Release - Blade Symphony|Win32">
+      <Configuration>Release - Blade Symphony</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release - CSGO|Win32">
@@ -201,7 +201,7 @@
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -232,7 +232,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -373,7 +373,7 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release - Insurgency|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release - DOTA|Win32'" Label="PropertySheets">
@@ -394,7 +394,7 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Insurgency|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug - DOTA|Win32'" Label="PropertySheets">
@@ -504,14 +504,14 @@
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - Nuclear Dawn|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - CSGO|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - Insurgency|Win32'">true</LinkIncremental>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - DOTA|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - Alien Swarm|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - Left 4 Dead 2|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - Nuclear Dawn|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - CSGO|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - Insurgency|Win32'">false</LinkIncremental>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - DOTA|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release - Alien Swarm|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug - CSS|Win32'">true</LinkIncremental>
@@ -528,21 +528,21 @@
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - Nuclear Dawn|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - CSGO|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - Insurgency|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - DOTA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - Alien Swarm|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - Left 4 Dead 2|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - Nuclear Dawn|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - CSGO|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - Insurgency|Win32'" />
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - DOTA|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug - Alien Swarm|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - Left 4 Dead 2|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - Nuclear Dawn|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - CSGO|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - Insurgency|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - DOTA|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug - Alien Swarm|Win32'" />
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug - CSS|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
@@ -583,15 +583,15 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - Dark Messiah|Win32'" />
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release - CSGO|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release - Insurgency|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release - DOTA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release - CSGO|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release - Insurgency|Win32'" />
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release - DOTA|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - CSGO|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - Insurgency|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - DOTA|Win32'" />
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release - CSS|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release - CSS|Win32'" />
@@ -644,7 +644,7 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - Nuclear Dawn|Win32'">sample.ext.2.nd</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - CSGO|Win32'">sample.ext.2.csgo</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - Insurgency|Win32'">sample.ext.2.insurgency</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'">sample.ext.2.blade</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'">sample.ext.2.blade</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - DOTA|Win32'">sample.ext.2.dota</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - CSS|Win32'">sample.ext.2.css</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - Alien Swarm|Win32'">sample.ext.2.swarm</TargetName>
@@ -664,7 +664,7 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - Nuclear Dawn|Win32'">sample.ext.2.nd</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - CSGO|Win32'">sample.ext.2.csgo</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - Insurgency|Win32'">sample.ext.2.insurgency</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'">sample.ext.2.blade</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'">sample.ext.2.blade</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - DOTA|Win32'">sample.ext.2.dota</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - CSS|Win32'">sample.ext.2.css</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - Alien Swarm|Win32'">sample.ext.2.swarm</TargetName>
@@ -1541,7 +1541,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Blade|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Blade Symphony|Win32'">
     <ClCompile>
       <AdditionalOptions>/D SE_EPISODEONE=1 /D SE_DARKMESSIAH=2 /D SE_ORANGEBOX=3 /D SE_BLOODYGOODTIME=4 /D SE_EYE=5 /D SE_CSS=6 /D SE_HL2DM=7 /D SE_DODS=8 /D SE_SDK2013=9 /D SE_TF2=10 /D SE_LEFT4DEAD=11 /D SE_NUCLEARDAWN=12 /D SE_LEFT4DEAD2=13 /D SE_ALIENSWARM=14 /D SE_PORTAL2=15 /D SE_BLADE=16 /D SE_INSURGENCY=17 /D SE_CSGO=18 /D SE_DOTA=19</AdditionalOptions>
       <Optimization>Disabled</Optimization>
@@ -1649,7 +1649,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - Blade|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - Blade Symphony|Win32'">
     <ClCompile>
       <AdditionalOptions>/MP /D SE_EPISODEONE=1 /D SE_DARKMESSIAH=2 /D SE_ORANGEBOX=3 /D SE_BLOODYGOODTIME=4 /D SE_EYE=5 /D SE_CSS=6 /D SE_HL2DM=7 /D SE_DODS=8 /D SE_SDK2013=9 /D SE_TF2=10 /D SE_LEFT4DEAD=11 /D SE_NUCLEARDAWN=12 /D SE_LEFT4DEAD2=13 /D SE_ALIENSWARM=14 /D SE_PORTAL2=15 /D SE_BLADE=16 /D SE_INSURGENCY=17 /D SE_CSGO=18 /D SE_DOTA=19</AdditionalOptions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>

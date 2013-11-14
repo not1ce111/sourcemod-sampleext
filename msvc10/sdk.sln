@@ -6,7 +6,7 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug - Alien Swarm|Win32 = Debug - Alien Swarm|Win32
-		Debug - Blade|Win32 = Debug - Blade|Win32
+		Debug - Blade Symphony|Win32 = Debug - Blade Symphony|Win32
 		Debug - Bloody Good Time|Win32 = Debug - Bloody Good Time|Win32
 		Debug - CSGO|Win32 = Debug - CSGO|Win32
 		Debug - CSS|Win32 = Debug - CSS|Win32
@@ -26,7 +26,7 @@ Global
 		Debug - TF2|Win32 = Debug - TF2|Win32
 		Debug|Win32 = Debug|Win32
 		Release - Alien Swarm|Win32 = Release - Alien Swarm|Win32
-		Release - Blade|Win32 = Release - Blade|Win32
+		Release - Blade Symphony|Win32 = Release - Blade Symphony|Win32
 		Release - Bloody Good Time|Win32 = Release - Bloody Good Time|Win32
 		Release - CSGO|Win32 = Release - CSGO|Win32
 		Release - CSS|Win32 = Release - CSS|Win32
@@ -49,8 +49,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Alien Swarm|Win32.ActiveCfg = Release - TF2|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Alien Swarm|Win32.Build.0 = Release - TF2|Win32
-		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Blade|Win32.ActiveCfg = Debug - Blade|Win32
-		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Blade|Win32.Build.0 = Debug - Blade|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Blade Symphony|Win32.ActiveCfg = Debug - Blade Symphony|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Blade Symphony|Win32.Build.0 = Debug - Blade Symphony|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Bloody Good Time|Win32.ActiveCfg = Debug - Bloody Good Time|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Bloody Good Time|Win32.Build.0 = Debug - Bloody Good Time|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - CSGO|Win32.ActiveCfg = Debug - CSGO|Win32
@@ -89,8 +89,8 @@ Global
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug|Win32.Build.0 = Debug|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Alien Swarm|Win32.ActiveCfg = Release - Alien Swarm|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Alien Swarm|Win32.Build.0 = Release - Alien Swarm|Win32
-		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Blade|Win32.ActiveCfg = Release - Blade|Win32
-		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Blade|Win32.Build.0 = Release - Blade|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Blade Symphony|Win32.ActiveCfg = Release - Blade Symphony|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Blade Symphony|Win32.Build.0 = Release - Blade Symphony|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Bloody Good Time|Win32.ActiveCfg = Release - Bloody Good Time|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - Bloody Good Time|Win32.Build.0 = Release - Bloody Good Time|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Release - CSGO|Win32.ActiveCfg = Release - CSGO|Win32
