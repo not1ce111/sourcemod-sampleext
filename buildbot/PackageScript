@@ -68,7 +68,7 @@ class CopyFile(Command):
 
 # Put the folders you want copied here
 folders = [
-#		['addons', 'sourcemod', 'extensions'], 
+		['addons', 'sourcemod', 'extensions'], 
 #		['addons', 'sourcemod', 'configs'], 
 #		['addons', 'sourcemod', 'gamedata'], 
 #		['addons', 'sourcemod', 'scripting', 'include']
@@ -118,7 +118,7 @@ def AddHL2Library(name, dest):
 
 debug_info = []
 
-AddHL2Library('tf2items', 'extensions')
+AddHL2Library('sampleext', 'extensions')
 
 job.AddCommandGroup(bincopies)
 	
