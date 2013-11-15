@@ -12,6 +12,34 @@ Installing AMBuild:
 
 To configure your project to use AMBuild, it helps if you have experience editing the Makefile for compiling Linux extensions by hand.
 
+The following environment variables are used by AMBuild -
+
+All OSes:
+MMSOURCE110 - Path to MetaMod: Source
+SOURCEMOD15 - Path to SourceMod 
+HL2SDK - Path to Original SDK
+HL2SDK2013 - Path to Source SDK 2013
+HL2SDKCSGO - Path to Counter-Strike: Global Offensive SDK
+HL2SDKCSS - Path to Counter-Strike: Source SDK
+HL2SDKDODS - Path to Day of Defeat: Source SDK
+HL2SDKINSURGENCY - Path to Insurgency SDK
+HL2SDKHL2DM - Path to Half-Life 2: DeathMatch SDK
+HL2SDKL4D - Path to Left 4 Dead SDK
+HL2SDKL4D2 - Path to Left 4 Dead 2 SDK
+HL2SDKND - Path to Nuclear Dawn SDK
+HL2SDKOB - Path to Orange Box SDK
+HL2SDKTF2 - Path to Team Fortress 2 SDK
+
+Windows and Linux only:
+HL2SDKBLADE - Path to Blade Symphony SDK
+
+Windows only:
+HL2SDK-BGT - Path to Bloody Good Time SDK
+HL2SDK-DARKM - Path to Dark Messiah SDK
+HL2SDKDOTA - Path to DOTA2 SDK
+HL2SDK-EYE - Path to E.Y.E. Divine Cybermancy SDK
+HL2SDK-SWARM - Path to Alien Swarm SDK
+
 Note: The files included in the sample extension assume that your extension files live directly in the sample's directory.  If this is not the case, several locations in AMBuilder and PackageScript will need to be updated.
 
 1. Open AMBuilder.  Near the bottom are several binary.AddSourceFiles entries.
@@ -22,6 +50,8 @@ Note: The files included in the sample extension assume that your extension file
 
 2. Open AMBuildScript.
 
+   Remove any games you're not planning on supporting from the self.possibleSdks list.
+
    Near the bottom is this line:
         AMBuild.Include(os.path.join('buildbot', 'Versioning'), globals)
 
@@ -29,6 +59,7 @@ Note: The files included in the sample extension assume that your extension file
         AMBuild.Include(os.path.join('buildbot', 'VersioningGit'), globals)
 
    If you aren't using versioning at all, comment this out, but be aware that this leaves other fields in the final build info blank.
+
 
 3. Edit product.version to have the extension's version number in it.
 
@@ -44,6 +75,9 @@ Note: The files included in the sample extension assume that your extension file
 Once everything is set up in the files, to actually run the compiler:
 
 python configure.py
-
 python build.py
 
+To only build for specific games:
+
+python configure.py --sdks hl2dm,dods,css,tf2
+python build.py
