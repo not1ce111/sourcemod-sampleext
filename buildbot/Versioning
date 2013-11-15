@@ -32,7 +32,7 @@ def PerformHgReversioning():
 		raise Exception('Could not detremine product version')
 	major, minor, release, tag = m.groups()
 
-	incFolder = os.path.join(AMBuild.sourceFolder, 'extension')
+	incFolder = AMBuild.sourceFolder
 	incFile = open(os.path.join(incFolder, 'version_auto.h'), 'w')
 	incFile.write("""
 #ifndef _AUTO_VERSION_INFORMATION_H_
@@ -56,7 +56,7 @@ def GetGitVersion():
 	p = command.RunDirectCommand(AMBuild, args)
 	if p.stdoutText == None:
 		raise Exception('Could not determine repository version')
-	return p.stdoutText
+	return p.stdoutText.strip()
 
 def PerformGitReversioning():
 	cset = GetGitVersion()
@@ -76,7 +76,7 @@ def PerformGitReversioning():
 		raise Exception('Could not detremine product version')
 	major, minor, release, tag = m.groups()
 
-	incFolder = os.path.join(AMBuild.sourceFolder, 'extension')
+	incFolder = AMBuild.sourceFolder
 	incFile = open(os.path.join(incFolder, 'version_auto.h'), 'w')
 	incFile.write("""
 #ifndef _AUTO_VERSION_INFORMATION_H_
@@ -94,6 +94,6 @@ def PerformGitReversioning():
 	incFile.close()
 	cache.WriteCache()
 
-PerformHgReversioning()
+PerformGitReversioning()
 
 

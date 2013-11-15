@@ -8,8 +8,8 @@ for i in SM.sdkInfo:
 
 	compiler = SM.DefaultHL2Compiler('extension', i)
 	
-	compiler['CXXINCLUDES'].append(os.path.join(AMBuild.sourceFolder, 'extension'))
-	compiler['CXXINCLUDES'].append(os.path.join(AMBuild.sourceFolder, 'extension', 'sdk'))
+	compiler['CXXINCLUDES'].append(AMBuild.sourceFolder)
+	compiler['CXXINCLUDES'].append(os.path.join(AMBuild.sourceFolder, 'sdk'))
 	
 	compiler['CXXINCLUDES'].append(os.path.join(AMBuild.cache['SOURCEMOD15'], 'public'))
 	compiler['CXXINCLUDES'].append(os.path.join(AMBuild.cache['SOURCEMOD15'], 'public', 'sourcepawn'))
@@ -20,15 +20,15 @@ for i in SM.sdkInfo:
 	if i != 'ep1':
 		compiler['CDEFINES'].append('HOOKING_ENABLED')
 
-	name = 'tf2items.ext.' + sdk['ext']
+	name = 'sampleext.ext.' + sdk['ext']
 	extension = AMBuild.AddJob(name)
 	binary = Cpp.LibraryBuilder(name, AMBuild, extension, compiler)
 	SM.PreSetupHL2Job(extension, binary, i)
 
 	binary.AddSourceFiles('sdk', ['smsdk_ext.cpp'])
-	binary.AddSourceFiles('extension', ['extension.cpp'])
+	binary.AddSourceFiles('', ['extension.cpp'])
 	
 	SM.PostSetupHL2Job(extension, binary, i)
-	SM.AutoVersion('extension', binary)
+	SM.AutoVersion('', binary)
 	SM.ExtractDebugInfo(extension, binary)
 	binary.SendToJob()

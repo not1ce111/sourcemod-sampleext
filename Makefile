@@ -11,7 +11,7 @@ HL2SDK_OB = ../../hl2sdks/hl2sdk-ob
 HL2SDK_CSS = ../../hl2sdks/hl2sdk-css
 HL2SDK_HL2DM = ../../hl2sdks/hl2sdk-hl2dm
 HL2SDK_DODS = ../../hl2sdks/hl2sdk-dods
-HL2SDK_2013 = ../../hl2sdks/hl2sdk-sdk2013
+HL2SDK_2013 = ../../hl2sdks/hl2sdk-2013
 HL2SDK_TF2 = ../../hl2sdks/hl2sdk-tf2
 HL2SDK_L4D = ../../hl2sdks/hl2sdk-l4d
 HL2SDK_ND = ../../hl2sdks/hl2sdk-nd
@@ -58,11 +58,17 @@ OS := $(shell uname -s)
 
 ifeq "$(OS)" "Darwin"
 	LIB_EXT = dylib
-	HL2LIB = $(HL2SDK)/lib/mac
+	ifeq "$(ENGINE)" "sdk2013"
+		HL2LIB = $(HL2SDK)/lib/public/osx32
+	else
+		HL2LIB = $(HL2SDK)/lib/mac
+	endif
 else
 	LIB_EXT = so
 	ifeq "$(ENGINE)" "original"
 		HL2LIB = $(HL2SDK)/linux_sdk
+	else ifeq "$(ENGINE)" "sdk2013"
+		HL2LIB = $(HL2SDK)/lib/public/linux32
 	else
 		HL2LIB = $(HL2SDK)/lib/linux
 	endif
@@ -170,19 +176,32 @@ endif
 INCLUDE += -I. -I.. -Isdk -I$(SMSDK)/public -I$(SMSDK)/public/sourcepawn
 
 ifeq "$(USEMETA)" "true"
-	ifeq "$(ENGINE)" "sdk2013"
-		LINK_TIER1 = $(HL2LIB)/tier1.a $(HL2LIB)/mathlib.a
+
+	ifeq "$(OS)" "Darwin"
+		ifeq "$(ENGINE)" "sdk2013"
+			LINK = $(HL2LIB)/tier1.a $(HL2LIB)/mathlib.a libvstdlib.dylib libtier0.dylib
+			CFLAGS += -liconv
+		else
+			LINK = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a libvstdlib.dylib libtier0.dylib
+		endif
+		ifneq (,$(filter insurgency csgo,$(ENGINE)))
+			LINK += $(HL2LIB)/interfaces_i486.a
+		endif
 	else
-		LINK_TIER1 = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a
+		ifneq (,$(filter css hl2dm dods tf2 l4d2,$(ENGINE)))
+			LINK = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a libvstdlib_srv.so libtier0_srv.so
+		else ifneq (,$(filter l4d nd blade insurgency csgo,$(ENGINE)))
+			LINK = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a libvstdlib.so libtier0.so
+			ifneq (,$(filter blade insurgency csgo,$(ENGINE)))
+				LINK += $(HL2LIB)/interfaces_i486.a
+			endif
+		else ifeq "$(ENGINE)" "sdk2013"
+			LINK = $(HL2LIB)/tier1.a $(HL2LIB)/mathlib.a libvstdlib_srv.so libtier0_srv.so
+		else
+			LINK = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a vstdlib_i486.so tier0_i486.so
+		endif
+
 	endif
-
-	LINK_HL2 = $(LINK_TIER1) $(LIB_PREFIX)vstdlib$(LIB_SUFFIX) $(LIB_PREFIX)tier0$(LIB_SUFFIX)
-
-	ifneq (,$(filter csgo blade insurgency,$(ENGINE)))
-		LINK_HL2 += $(HL2LIB)/interfaces_i486.a
-	endif
-
-	LINK += $(LINK_HL2)
 
 	INCLUDE += -I$(HL2PUB) -I$(HL2PUB)/engine -I$(HL2PUB)/tier0 -I$(HL2PUB)/tier1 -I$(METAMOD) \
 		-I$(METAMOD)/sourcehook 
@@ -194,9 +213,14 @@ endif
 
 LINK += -m32 -lm -ldl
 
-CFLAGS += -DPOSIX -Dstricmp=strcasecmp -D_stricmp=strcasecmp -D_strnicmp=strncasecmp -Dstrnicmp=strncasecmp \
-	-D_snprintf=snprintf -D_vsnprintf=vsnprintf -D_alloca=alloca -Dstrcmpi=strcasecmp -DCOMPILER_GCC -Wall -Werror \
-	-Wno-overloaded-virtual -Wno-switch -Wno-unused -msse -DSOURCEMOD_BUILD -DHAVE_STDINT_H -m32
+CFLAGS += -DPOSIX -D_alloca=alloca -DCOMPILER_GCC -Wall -Werror -Wno-overloaded-virtual -Wno-switch -Wno-unused \
+	-msse -DSOURCEMOD_BUILD -DHAVE_STDINT_H -m32
+
+ifneq "$(ENGINE)" "sdk2013"
+	CFLAGS += -Dstricmp=strcasecmp -Dstrcmpi=strcasecmp -D_stricmp=strcasecmp -D_strnicmp=strncasecmp -Dstrnicmp=strncasecmp \
+	-D_snprintf=snprintf -D_vsnprintf=vsnprintf 
+endif
+
 CPPFLAGS += -Wno-non-virtual-dtor -fno-exceptions -fno-rtti
 
 ################################################
@@ -240,7 +264,7 @@ endif
 
 # If not clang
 ifeq "$(IS_CLANG)" "0"
-	CFLAGS += -mfpmath=sse
+	CFLAGS += -mfpmath=sse -DGNUC
 endif
 
 # Clang || GCC >= 4
