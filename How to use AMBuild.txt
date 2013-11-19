@@ -50,8 +50,6 @@ Note: The files included in the sample extension assume that your extension file
 
 2. Open AMBuildScript.
 
-   Remove any games you're not planning on supporting from the self.possibleSdks list.
-
    Near the bottom is this line:
         AMBuild.Include(os.path.join('buildbot', 'Versioning'), globals)
 
@@ -59,7 +57,7 @@ Note: The files included in the sample extension assume that your extension file
         AMBuild.Include(os.path.join('buildbot', 'VersioningGit'), globals)
 
    If you aren't using versioning at all, comment this out, but be aware that this leaves other fields in the final build info blank.
-
+    Other VCSes may be supported by making a copy of Versioning and updating it, but they are not included with this package.
 
 3. Edit product.version to have the extension's version number in it.
 
@@ -72,7 +70,9 @@ Note: The files included in the sample extension assume that your extension file
    Just below that is a section labeled Copy Files.  The first lines are the place where the where said files are located, the second lines are where they should be copied to.
    Any destination directories should have been added to the folders list.
 
-Once everything is set up in the files, to actually run the compiler:
+NOTE FOR WINDOWS: This should be run from a Visual Studio Command Prompt or otherwise have the Visual C++ compiler in your path.
+
+Once everything is set up in the files, to actually run the compiler for Debug builds:
 
 python configure.py
 python build.py
@@ -81,3 +81,9 @@ To only build for specific games:
 
 python configure.py --sdks hl2dm,dods,css,tf2
 python build.py
+
+To build a release version, use this:
+python configure.py --enable-optimize
+python build.py
+
+Lastly, go to the package directory and create a compressed version of the files there and upload them somewhere.
