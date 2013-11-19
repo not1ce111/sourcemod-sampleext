@@ -48,6 +48,9 @@ Note: The files included in the sample extension assume that your extension file
    For instance, if you have a second file named natives.cpp, the line should look like this:
 	binary.AddSourceFiles(['extension.cpp', 'natives.cpp'])
 
+   Also, change sampleext to the name of your extension
+   i.e. name = 'readgamesounds.ext.' + sdk['ext']
+
 2. Open AMBuildScript.
 
    Near the bottom is this line:
@@ -65,8 +68,12 @@ Note: The files included in the sample extension assume that your extension file
 
 5. Edit version.rc to have your extension's copyright information in it.
 
-6. Edit buildbot/PackageScript.  About halfway down, these is a list named folders.  Add any folders you need created to this list using the format provided.
-   addons/sourcemod should normally be present in this list.
+6. Edit buildbot/PackageScript.
+   Near the bottom is a line with AddHL2Library.  Replace sampleext with your extension's name, i.e.
+   AddHL2Library('readgamesounds', 'extensions')
+
+   About halfway down, there is a list of folders.  Add any folders you need created to this list using the format provided.
+   addons/sourcemod should ALWAYS be present in this list.
    Just below that is a section labeled Copy Files.  The first lines are the place where the where said files are located, the second lines are where they should be copied to.
    Any destination directories should have been added to the folders list.
 
