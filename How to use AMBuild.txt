@@ -22,8 +22,8 @@ HL2SDK2013 - Path to Source SDK 2013
 HL2SDKCSGO - Path to Counter-Strike: Global Offensive SDK
 HL2SDKCSS - Path to Counter-Strike: Source SDK
 HL2SDKDODS - Path to Day of Defeat: Source SDK
-HL2SDKINSURGENCY - Path to Insurgency SDK
 HL2SDKHL2DM - Path to Half-Life 2: DeathMatch SDK
+HL2SDKINSURGENCY - Path to Insurgency SDK
 HL2SDKL4D - Path to Left 4 Dead SDK
 HL2SDKL4D2 - Path to Left 4 Dead 2 SDK
 HL2SDKND - Path to Nuclear Dawn SDK
@@ -78,6 +78,8 @@ Note: The files included in the sample extension assume that your extension file
    Any destination directories should have been added to the folders list.
 
 NOTE FOR WINDOWS: This should be run from a Visual Studio Command Prompt or otherwise have the Visual C++ compiler in your path.
+
+NOTE FOR LINUX: Some versions of Linux do not ship urllib.request with Python 2.x.  If necessary, use Python 3.x.
 
 Once everything is set up in the files, to actually run the compiler for Debug builds:
 
