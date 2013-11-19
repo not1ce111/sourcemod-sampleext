@@ -82,7 +82,7 @@ To only build for specific games:
 python configure.py --sdks hl2dm,dods,css,tf2
 python build.py
 
-To build a release version, use this:
+To build a release version, use this (or combine it with the --sdks line above):
 python configure.py --enable-optimize
 python build.py
 
