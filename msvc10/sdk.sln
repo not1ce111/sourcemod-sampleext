@@ -47,8 +47,8 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Alien Swarm|Win32.ActiveCfg = Release - TF2|Win32
-		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Alien Swarm|Win32.Build.0 = Release - TF2|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Alien Swarm|Win32.ActiveCfg = Debug - Alien Swarm|Win32
+		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Alien Swarm|Win32.Build.0 = Debug - Alien Swarm|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Blade Symphony|Win32.ActiveCfg = Debug - Blade Symphony|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Blade Symphony|Win32.Build.0 = Debug - Blade Symphony|Win32
 		{B3E797CF-4E77-4C9D-B8A8-7589B6902206}.Debug - Bloody Good Time|Win32.ActiveCfg = Debug - Bloody Good Time|Win32
