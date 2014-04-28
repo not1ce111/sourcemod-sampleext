@@ -7,8 +7,8 @@ includes = builder.AddFolder('includes')
 
 argv = [
   sys.executable,
-  os.path.join(builder.sourcePath, 'tools', 'buildbot', 'generate_headers.py'),
-#  os.path.join(builder.sourcePath, 'tools', 'buildbot', 'generate_headers_git.py'),
+  os.path.join(builder.sourcePath, 'buildbot', 'generate_headers.py'),
+#  os.path.join(builder.sourcePath, 'buildbot', 'generate_headers_git.py'),
   os.path.join(builder.sourcePath),
   os.path.join(builder.buildPath, 'includes'),
 ]

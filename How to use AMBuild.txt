@@ -73,15 +73,15 @@ Once everything is set up in the files, to actually run the compiler:
 mkdir build
 cd build
 python ../configure.py
-python build.py
+ambuild
 
 To only build for specific games:
 
 python ../configure.py --sdks hl2dm,dods,css,tf2
-python build.py
+ambuild
 
 To build a release version, use this (or combine it with the --sdks line above):
 python ../configure.py --enable-optimize
-python build.py
+ambuild
 
 Lastly, go to the package directory and create a compressed version of the files there and upload them somewhere.
