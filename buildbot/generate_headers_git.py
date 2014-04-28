@@ -27,7 +27,7 @@ def get_git_version():
       raise subprocess.CalledProcessError(rval, argv)
     text = output.decode('utf8')
 
-  return text
+  return text.rstrip('\n')
 
 def output_version_headers():
   cset = get_git_version()
