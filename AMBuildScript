@@ -66,7 +66,7 @@ class SMConfig(object):
     self.extensions = []
     self.generated_headers = None
     self.mms_root = None
-	self.sourcemod_root = None
+    self.sourcemod_root = None
 
   def detectProductVersion(self):
     builder.AddConfigureFile('product.version')
@@ -314,10 +314,6 @@ class SMConfig(object):
       os.path.join(mms_path, 'sourcehook'),
     ]
 	
-	compiler.cxxincludes += [
-	
-	]
-
     defines = ['SE_' + PossibleSDKs[i].define + '=' + PossibleSDKs[i].code for i in PossibleSDKs]
     compiler.defines += defines
     paths = [
