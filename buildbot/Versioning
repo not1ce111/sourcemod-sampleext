@@ -7,8 +7,8 @@ includes = builder.AddFolder('includes')
 
 argv = [
   sys.executable,
-  os.path.join(builder.sourcePath, 'buildbot', 'generate_headers.py'),
-#  os.path.join(builder.sourcePath, 'buildbot', 'generate_headers_git.py'),
+#  os.path.join(builder.sourcePath, 'buildbot', 'generate_headers.py'),
+  os.path.join(builder.sourcePath, 'buildbot', 'generate_headers_git.py'),
   os.path.join(builder.sourcePath),
   os.path.join(builder.buildPath, 'includes'),
 ]
@@ -20,7 +20,7 @@ sources = [
   os.path.join(builder.sourcePath, 'product.version'),
 
   # This is a hack, but we need some way to only run this script when HG changes.
-  os.path.join(builder.sourcePath, '.hg', 'dirstate'),
+  #os.path.join(builder.sourcePath, '.hg', 'dirstate'),
 
   # The script source is a dependency, of course...
   argv[1]
