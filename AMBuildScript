@@ -331,9 +331,9 @@ class SM:
 				staticLibs = os.path.join(sdkPath, 'lib', 'linux')
 			workFolder = os.path.join(AMBuild.outputFolder, job.workFolder)
 			libs = []
-			if sdk in ['css', 'hl2dm', 'dods', 'tf2', 'l4d2']:
+			if sdk in ['css', 'hl2dm', 'dods', 'tf2', 'l4d2', 'nd']:
 				libs = ['tier1_i486.a', 'mathlib_i486.a', 'libvstdlib_srv.so', 'libtier0_srv.so']
-			elif sdk in ['l4d', 'nd', 'blade', 'insurgency', 'csgo']:
+			elif sdk in ['l4d', 'blade', 'insurgency', 'csgo']:
 				libs = ['tier1_i486.a', 'mathlib_i486.a', 'libvstdlib.so', 'libtier0.so']
 				if sdk in ['blade', 'insurgency', 'csgo']:
 					libs.append('interfaces_i486.a')
@@ -453,10 +453,10 @@ class SM:
 		if not noLink:
 			if AMBuild.target['platform'] == 'linux':
 				compiler['POSTLINKFLAGS'][0:0] = ['-lm']
-				if sdk in ['css', 'hl2dm', 'dods', 'tf2', 'sdk2013', 'l4d2']:
+				if sdk in ['css', 'hl2dm', 'dods', 'tf2', 'sdk2013', 'l4d2', 'nd']:
 					compiler['POSTLINKFLAGS'][0:0] = ['libtier0_srv.so']
 					compiler['POSTLINKFLAGS'][0:0] = ['libvstdlib_srv.so']
-				elif sdk in ['l4d', 'nd', 'blade', 'insurgency', 'csgo']:
+				elif sdk in ['l4d', 'blade', 'insurgency', 'csgo']:
 					compiler['POSTLINKFLAGS'][0:0] = ['libtier0.so']
 					compiler['POSTLINKFLAGS'][0:0] = ['libvstdlib.so']
 				else:

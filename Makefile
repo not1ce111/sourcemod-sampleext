@@ -132,7 +132,7 @@ ifeq "$(ENGINE)" "nd"
 	HL2SDK = $(HL2SDK_ND)
 	CFLAGS += -DSOURCE_ENGINE=12
 	LIB_PREFIX = lib
-	LIB_SUFFIX = .$(LIB_EXT)
+	LIB_SUFFIX = _srv.$(LIB_EXT)
 	BUILD_SUFFIX = .2.nd
 endif
 ifeq "$(ENGINE)" "left4dead2"
@@ -188,9 +188,9 @@ ifeq "$(USEMETA)" "true"
 			LINK += $(HL2LIB)/interfaces_i486.a
 		endif
 	else
-		ifneq (,$(filter css hl2dm dods tf2 l4d2,$(ENGINE)))
+		ifneq (,$(filter css hl2dm dods tf2 l4d2 nd,$(ENGINE)))
 			LINK = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a libvstdlib_srv.so libtier0_srv.so
-		else ifneq (,$(filter l4d nd blade insurgency csgo,$(ENGINE)))
+		else ifneq (,$(filter l4d blade insurgency csgo,$(ENGINE)))
 			LINK = $(HL2LIB)/tier1_i486.a $(HL2LIB)/mathlib_i486.a libvstdlib.so libtier0.so
 			ifneq (,$(filter blade insurgency csgo,$(ENGINE)))
 				LINK += $(HL2LIB)/interfaces_i486.a
