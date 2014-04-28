@@ -66,6 +66,7 @@ class SMConfig(object):
     self.extensions = []
     self.generated_headers = None
     self.mms_root = None
+	self.sourcemod_root = None
 
   def detectProductVersion(self):
     builder.AddConfigureFile('product.version')
@@ -106,6 +107,12 @@ class SMConfig(object):
       self.mms_root = ResolveEnvPath('MMSOURCE_DEV', 'mmsource-central')
       if not self.mms_root:
         raise Exception('Could not find a source copy of Metamod:Source')
+
+    self.sourcemod_root = ResolveEnvPath('SOURCEMOD15', 'sourcemod-1.5')
+    if not self.sourcemod_root:
+      self.sourcemod_root = ResolveEnvPath('SOURCEMOD_DEV', 'sourcemod-central')
+      if not self.sourcemod_root:
+        raise Exception('Could not find a source copy of SourceMod')
 
   def configure(self):
     builder.AddConfigureFile('pushbuild.txt')
@@ -287,10 +294,10 @@ class SMConfig(object):
     compiler.cxxincludes += [
       os.path.join(context.currentSourcePath),
       os.path.join(context.currentSourcePath, 'sdk'),
-      os.path.join(builder.sourcePath, 'public'),
-      os.path.join(builder.sourcePath, 'public', 'extensions'),
-      os.path.join(builder.sourcePath, 'public', 'sourcepawn'),
-      os.path.join(builder.sourcePath, 'public', 'amtl'),
+      os.path.join(self.sourcemod_root, 'public'),
+      os.path.join(self.sourcemod_root, 'public', 'extensions'),
+      os.path.join(self.sourcemod_root, 'public', 'sourcepawn'),
+      os.path.join(self.sourcemod_root, 'public', 'amtl'),
     ]
     return compiler
 
@@ -306,6 +313,10 @@ class SMConfig(object):
       os.path.join(mms_path),
       os.path.join(mms_path, 'sourcehook'),
     ]
+	
+	compiler.cxxincludes += [
+	
+	]
 
     defines = ['SE_' + PossibleSDKs[i].define + '=' + PossibleSDKs[i].code for i in PossibleSDKs]
     compiler.defines += defines
