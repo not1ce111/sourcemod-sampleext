@@ -16,11 +16,11 @@
 #define BINARY_NAME "sampleext.ext.dll\0"
 #endif
 
-#define SM_BUILD_TAG		"-manual"
-#define SM_BUILD_UNIQUEID	"[MANUAL BUILD]"
-#define SM_VERSION			"0.0.0"
-#define SM_FULL_VERSION		SM_VERSION SM_BUILD_TAG
-#define SM_FILE_VERSION		0,0,0,0
+#define BUILD_TAG		"-manual"
+#define BUILD_UNIQUEID	"[MANUAL BUILD]"
+#define VERSION_STRING		"1.0.0"
+#define FULL_VERSION		VERSION_STRING BUILD_TAG
+#define VERSION_FILE		0,0,0,0
 
 #endif
 

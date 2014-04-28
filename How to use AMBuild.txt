@@ -8,7 +8,7 @@ Prerequisites:
 Installing AMBuild:
 1. Use Mercurial to clone the AMBuild repository: https://hg.alliedmods.net/ambuild/
 2. Run python setup.py build
-3. Run python setup.py install
+3. Run python setup.py install.  This requires administrative permissions on most OSes.
 
 To configure your project to use AMBuild, it helps if you have experience editing the Makefile for compiling Linux extensions by hand.
 
@@ -18,81 +18,70 @@ All OSes:
 MMSOURCE110 - Path to MetaMod: Source
 SOURCEMOD15 - Path to SourceMod 
 HL2SDK - Path to Original SDK
-HL2SDK2013 - Path to Source SDK 2013
 HL2SDKCSGO - Path to Counter-Strike: Global Offensive SDK
 HL2SDKCSS - Path to Counter-Strike: Source SDK
 HL2SDKDODS - Path to Day of Defeat: Source SDK
 HL2SDKHL2DM - Path to Half-Life 2: DeathMatch SDK
-HL2SDKINSURGENCY - Path to Insurgency SDK
 HL2SDKL4D - Path to Left 4 Dead SDK
 HL2SDKL4D2 - Path to Left 4 Dead 2 SDK
 HL2SDKND - Path to Nuclear Dawn SDK
 HL2SDKOB - Path to Orange Box SDK
 HL2SDKTF2 - Path to Team Fortress 2 SDK
 
-Windows and Linux only:
-HL2SDKBLADE - Path to Blade Symphony SDK
-
 Windows only:
 HL2SDK-BGT - Path to Bloody Good Time SDK
 HL2SDK-DARKM - Path to Dark Messiah SDK
-HL2SDKDOTA - Path to DOTA2 SDK
 HL2SDK-EYE - Path to E.Y.E. Divine Cybermancy SDK
 HL2SDK-SWARM - Path to Alien Swarm SDK
 
 Note: The files included in the sample extension assume that your extension files live directly in the sample's directory.  If this is not the case, several locations in AMBuilder and PackageScript will need to be updated.
 
-1. Open AMBuilder.  Near the bottom are several binary.AddSourceFiles entries.
-   Basically, you'll want to edit the second of these lines to reference any additional files you need compiled.
-
-   For instance, if you have a second file named natives.cpp, the line should look like this:
-	binary.AddSourceFiles(['extension.cpp', 'natives.cpp'])
+1. Open AMBuilder.  Near the bottom is an array named binary.sources.
+   Basically, you'll want to add lines to this array for each .cpp file in your project.
 
    Also, change sampleext to the name of your extension
-   i.e. name = 'readgamesounds.ext.' + sdk['ext']
+   i.e. name = 'readgamesounds.ext.' + sdk.ext
 
 2. Open AMBuildScript.
 
-   Near the bottom is this line:
-        AMBuild.Include(os.path.join('buildbot', 'Versioning'), globals)
+   If you're not using source control versioning, delete or comment out the section that starts with SM.generated_headers =
 
-   This will attempt to retrieve the version number from a Mercurial repository.  If you are using Git instead, change this to:
-        AMBuild.Include(os.path.join('buildbot', 'VersioningGit'), globals)
+3. If you're using source control versioning, open buildbot/Versioning.
 
-   If you aren't using versioning at all, comment this out, but be aware that this leaves other fields in the final build info blank.
-    Other VCSes may be supported by making a copy of Versioning and updating it, but they are not included with this package.
+By default, this takes the build number from Mercurial using the hg command-line program.
+If you use git, comment out the line mentioning generate_headers.py and uncomment the line that mentions generate_headers_git.py.
 
-3. Edit product.version to have the extension's version number in it.
+4. Edit product.version to have the extension's version number in it.
 
-4. Edit version.h to have your extension's version and binary name in it. This is optional and only used if you manually include version.rc and version.h in your VC++ project and compile manually.
+5. Edit version.h to have your extension's version and binary name in it. This is optional and only used if you manually include version.rc and version.h in your VC++ project and compile manually.
 
-5. Edit version.rc to have your extension's copyright information in it.
+6. Edit version.rc to have your extension's copyright information in it.
 
-6. Edit buildbot/PackageScript.
-   Near the bottom is a line with AddHL2Library.  Replace sampleext with your extension's name, i.e.
-   AddHL2Library('readgamesounds', 'extensions')
+7. Edit buildbot/PackageScript.
 
-   About halfway down, there is a list of folders.  Add any folders you need created to this list using the format provided.
-   addons/sourcemod should ALWAYS be present in this list.
-   Just below that is a section labeled Copy Files.  The first lines are the place where the where said files are located, the second lines are where they should be copied to.
-   Any destination directories should have been added to the folders list.
+   Near the top, there is a list of folders.  Add any folders you need created to this list using the format provided.
+
+   Near the bottom is a section of CopyFiles entries that are commented out. The first argument is the source location, the second is the target location
+   where the files will be in the actual distribution.  The third argument is an array of filenames.
 
 NOTE FOR WINDOWS: This should be run from a Visual Studio Command Prompt or otherwise have the Visual C++ compiler in your path.
 
 NOTE FOR LINUX: Some versions of Linux do not ship urllib.request with Python 2.x.  If necessary, use Python 3.x.
 
-Once everything is set up in the files, to actually run the compiler for Debug builds:
+Once everything is set up in the files, to actually run the compiler:
 
-python configure.py
+mkdir build
+cd build
+python ../configure.py
 python build.py
 
 To only build for specific games:
 
-python configure.py --sdks hl2dm,dods,css,tf2
+python ../configure.py --sdks hl2dm,dods,css,tf2
 python build.py
 
 To build a release version, use this (or combine it with the --sdks line above):
-python configure.py --enable-optimize
+python ../configure.py --enable-optimize
 python build.py
 
 Lastly, go to the package directory and create a compressed version of the files there and upload them somewhere.
