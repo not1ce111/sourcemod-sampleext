@@ -258,7 +258,7 @@ class SMConfig(object):
       binary.sources += ['version.rc']
       binary.compiler.rcdefines += [
         'BINARY_NAME="{0}"'.format(binary.outputFile),
-        'SM_GENERATED_BUILD',
+        'EXT_GENERATED_BUILD',
         'RC_COMPILE',
       ]
     elif builder.target_platform == 'mac':
@@ -275,7 +275,7 @@ class SMConfig(object):
       binary.sources += ['version.rc']
       binary.compiler.rcdefines += [
         'BINARY_NAME="{0}"'.format(binary.outputFile),
-        'SM_GENERATED_BUILD',
+        'EXT_GENERATED_BUILD',
         'RC_COMPILE',
       ]
     binary.compiler.sourcedeps += SM.generated_headers

@@ -47,22 +47,22 @@ def output_version_headers():
 
   with open(os.path.join(OutputFolder, 'version_auto.h'), 'w') as fp:
     fp.write("""
-#ifndef _AUTO_VERSION_INFORMATION_H_
-#define _AUTO_VERSION_INFORMATION_H_
+#ifndef _EXT_AUTO_VERSION_INFORMATION_H_
+#define _EXT_AUTO_VERSION_INFORMATION_H_
 
-#define BUILD_TAG		\"{0}\"
-#define BUILD_REV		\"{1}\"
-#define BUILD_CSET		\"{2}\"
-#define BUILD_MAJOR		\"{3}\"
-#define BUILD_MINOR		\"{4}\"
-#define BUILD_RELEASE	\"{5}\"
+#define EXT_BUILD_TAG		\"{0}\"
+#define EXT_BUILD_REV		\"{1}\"
+#define EXT_BUILD_CSET		\"{2}\"
+#define EXT_BUILD_MAJOR		\"{3}\"
+#define EXT_BUILD_MINOR		\"{4}\"
+#define EXT_BUILD_RELEASE	\"{5}\"
 
-#define BUILD_UNIQUEID BUILD_REV \":\" BUILD_CSET
+#define EXT_BUILD_UNIQUEID EXT_BUILD_REV \":\" EXT_BUILD_CSET
 
-#define VERSION_STRING	\"{6}\"
-#define VERSION_FILE		{7},{8},{9},0
+#define EXT_VERSION_STRING	\"{6}\"
+#define EXT_VERSION_FILE	{7},{8},{9},0
 
-#endif /* _AUTO_VERSION_INFORMATION_H_ */
+#endif /* _EXT_AUTO_VERSION_INFORMATION_H_ */
     """.format(tag, rev, cset, major, minor, release, fullstring, major, minor, release))
 
 output_version_headers()

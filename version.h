@@ -7,20 +7,20 @@
  * the build scripts.
  */
 
-#if defined SM_GENERATED_BUILD
+#if defined EXT_GENERATED_BUILD
 #include "version_auto.h"
 #else
 
-#ifndef SM_GENERATED_BUILD
+#ifndef EXT_GENERATED_BUILD
 #undef BINARY_NAME
 #define BINARY_NAME "sampleext.ext.dll\0"
 #endif
 
-#define BUILD_TAG		"-manual"
-#define BUILD_UNIQUEID	"[MANUAL BUILD]"
-#define VERSION_STRING		"1.0.0"
-#define FULL_VERSION		VERSION_STRING BUILD_TAG
-#define VERSION_FILE		0,0,0,0
+#define EXT_BUILD_TAG		"-manual"
+#define EXT_BUILD_UNIQUEID	"[MANUAL BUILD]"
+#define EXT_VERSION_STRING	"1.0.0"
+#define EXT_FULL_VERSION	EXT_VERSION_STRING EXT_BUILD_TAG
+#define EXT_VERSION_FILE	1,0,0,0
 
 #endif
 

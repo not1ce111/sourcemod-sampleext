@@ -1,19 +1,36 @@
+// Microsoft Visual C++ generated resource script.
+//
+//#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
 #include "winres.h"
 
 #include <version.h>
 
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif
+#endif //_WIN32
 
-#ifndef SM_GENERATED_BUILD
-#define BINARY_NAME "sampleext.ext.dll\0"
-#endif
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION SM_FILE_VERSION
- PRODUCTVERSION SM_FILE_VERSION
+ FILEVERSION EXT_VERSION_FILE
+ PRODUCTVERSION EXT_VERSION_FILE
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -26,20 +43,61 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040904b0"
+        BLOCK "000004b0"
         BEGIN
             VALUE "Comments", "Sample Extension"
             VALUE "FileDescription", "Sample extension to help developers"
-            VALUE "FileVersion", SM_BUILD_UNIQUEID
-            VALUE "InternalName", "SAMPLE"
-            VALUE "LegalCopyright", "Copyright (C) 2004-2008 AlliedModders"
+            VALUE "FileVersion", EXT_VERSION_STRING
+            VALUE "InternalName", "sample"
+            VALUE "LegalCopyright", "Copyright (c) 2004-2008, AlliedModders LLC"
             VALUE "OriginalFilename", BINARY_NAME
             VALUE "ProductName", "Sample Extension"
-            VALUE "ProductVersion", SM_FULL_VERSION
+            VALUE "ProductVersion", EXT_VERSION_STRING
         END
     END
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x0409, 0x04B0
+        VALUE "Translation", 0x0, 1200
     END
 END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
