@@ -107,7 +107,7 @@ class SMConfig(object):
       if not self.mms_root:
         raise Exception('Could not find a source copy of Metamod:Source')
 
-    self.sourcemod_root = ResolveEnvPath('SOURCEMOD15', 'sourcemod-1.5')
+    self.sourcemod_root = ResolveEnvPath('SOURCEMOD16', 'sourcemod-1.6')
     if not self.sourcemod_root:
       self.sourcemod_root = ResolveEnvPath('SOURCEMOD_DEV', 'sourcemod-central')
       if not self.sourcemod_root:
