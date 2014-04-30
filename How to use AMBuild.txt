@@ -64,6 +64,12 @@ If you use git, comment out the line mentioning generate_headers.py and uncommen
    Near the bottom is a section of CopyFiles entries that are commented out. The first argument is the source location, the second is the target location
    where the files will be in the actual distribution.  The third argument is an array of filenames.
 
+8. If you are building an extension that only works on specific games:
+   Edit configure.py.
+
+   Next to the text '--sdks' is the text default='all'.  Change "all" to a comma separated list of engines you want to support from this list:
+   episodeone, orangebox, css, hl2dm, dods, tf2, left4dead, nucleardawn, left4dead2, darkmessiah, alienswarm, bloodygoodtime, eye, csgo, portal2
+
 NOTE FOR WINDOWS: This should be run from a Visual Studio Command Prompt or otherwise have the Visual C++ compiler in your path.
 
 NOTE FOR LINUX: Some versions of Linux do not ship urllib.request with Python 2.x.  If necessary, use Python 3.x.
