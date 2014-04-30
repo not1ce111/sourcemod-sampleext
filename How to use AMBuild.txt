@@ -10,9 +10,9 @@ Installing AMBuild:
 2. Run python setup.py build
 3. Run python setup.py install.  This requires administrative permissions on most OSes.
 
-To configure your project to use AMBuild, it helps if you have experience editing the Makefile for compiling Linux extensions by hand.
+To configure your project to use AMBuild2, it helps if you have experience editing the Makefile for compiling Linux extensions by hand.
 
-The following environment variables are used by AMBuild -
+The following environment variables are used by AMBuild2 -
 
 All OSes:
 MMSOURCE110 - Path to MetaMod: Source
@@ -53,9 +53,9 @@ If you use git, comment out the line mentioning generate_headers.py and uncommen
 
 4. Edit product.version to have the extension's version number in it.
 
-5. Edit version.h to have your extension's version and binary name in it. This is optional and only used if you manually include version.rc and version.h in your VC++ project and compile manually.
+4. Edit version.rc to have your extension's copyright information in it.  This, along with version.h, are used to populate metadata for the Windows DLL file.
 
-6. Edit version.rc to have your extension's copyright information in it.
+6. Edit version.h to have your extension's version and binary name in it.
 
 7. Edit buildbot/PackageScript.
 
